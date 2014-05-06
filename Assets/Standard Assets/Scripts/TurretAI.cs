@@ -3,7 +3,6 @@ using System.Collections;
 
 public class TurretAI : EnemyAI  
 {
-	//public Transform turretBase;
 	// Use this for initialization
 
 	public override void Start () 

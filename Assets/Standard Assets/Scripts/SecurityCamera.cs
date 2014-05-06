@@ -27,20 +27,23 @@ public class SecurityCamera : EnemyAI
 	{
 		base.Update ();
 
-		distToLaser = Vector3.Distance (laser.position, targetTransform.position);
-
-		if(GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(secCam),targetTransform.collider.bounds) && dist < 19)
+		if(targetTransform != null)
 		{
-			if(doOnce)
+			distToLaser = Vector3.Distance (laser.position, targetTransform.position);
+
+			if(GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(secCam),targetTransform.collider.bounds) && dist < 19)
 			{
-				//audio.Play();
-				IronManAI.anim.SetBool("TurnRight", true);
-				doOnce = false;
-			}
-			else if((distToLaser < 16) && (!doOnce))
-			{
-				IronManAI.anim.SetBool("Run", true);
-				secCam.camera.enabled = false;
+				if(doOnce)
+				{
+					audio.Play();
+					IronManAI.anim.SetBool("TurnRight", true);
+					doOnce = false;
+				}
+				else if((distToLaser < 16) && (!doOnce))
+				{
+					IronManAI.anim.SetBool("Run", true);
+					secCam.camera.enabled = false;
+				}
 			}
 		}
 	}

@@ -8,10 +8,13 @@ public class EnemyAI : MonoBehaviour
 	public float rotationSpeed = 3.0f;
 	public Vector3 toPlayer;
 	public float dist;
-
+	protected CameraControl camControl;
+	private GameObject c;
+	
 	public virtual void Start () 
 	{
-		// Do something
+		c = GameObject.FindWithTag("camc"); //Get the players transform
+		camControl = c.GetComponent <CameraControl>();
 	}
 	
 	// Update is called once per frame
